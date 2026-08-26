@@ -1,0 +1,787 @@
+<section class="body" id="body"></section>
+       <h2>
+         personal information
+       </h2># Multi-Person Form Preview System
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>
+    CHRISCALLIS CONSULT
+</title>
+</body>
+</head>
+</html>
+<header>
+    <nav>
+        <h2>
+            filling your information below
+        </h2>
+        <ul class="ul">
+            <li><a href=""></a>contact us</li>
+    </nav>
+</header>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multi-Person Form Preview System</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --success: #16a34a;
+      --success-hover: #15803d;
+      --danger: #dc2626;
+      --danger-hover: #b91c1c;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 20px;
+    }
+
+    .app-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    @media (min-width: 992px) {
+
+      .app-container {
+        grid-template-columns: 1.2fr 1fr;
+      }
+    }
+
+    .card {
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border);
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 1.5rem;
+      color: var(--text);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 12px;
+
+      margin-bottom: 20px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    @media (min-width: 600px) {
+      .form-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+      .full-width {
+        grid-column: span 2;
+      }
+    }
+
+    .form-group {
+
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    input {
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.95rem;
+      background-color: #fff;
+
+      transition: all 0.2s;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+
+    .button-group {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    button {
+      flex: 1;
+      padding: 12px 20px;
+      font-size: 0.95rem;
+
+      font-weight: 600;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-hover);
+    }
+
+    .btn-success {
+      background-color: var(--success);
+      color: white;
+
+    }
+
+    .btn-success:hover {
+      background-color: var(--success-hover);
+    }
+
+    .btn-danger {
+      background-color: #fef2f2;
+      color: var(--danger);
+      border: 1px solid #fee2e2;
+    }
+
+    .btn-danger:hover {
+      background-color: #fee2e2;
+    }
+
+    .preview-section {
+      display: flex;
+      flex-direction: column;
+
+      gap: 16px;
+    }
+
+    .person-entry {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--primary);
+      padding: 16px;
+      border-radius: 6px;
+      margin-bottom: 16px;
+    }
+
+    .person-title {
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 10px;
+      font-size: 1.05rem;
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: 4px;
+
+    }
+
+    .info-list {
+      margin: 0;
+      padding: 0;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .status-message {
+      color: var(--text-muted);
+      font-style: italic;
+      text-align: center;
+      padding: 40px 20px;
+    }
+    
+    .badge {
+      display: inline-block;
+      background: #e0f2fe;
+
+      color: #0369a1;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-left: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-container">
+    
+    <!-- Input Form Card -->
+    <div class="card">
+      <h2>Information Entry Form</h2>
+      <form id="infoForm" onsubmit="return false;">
+        <div class="form-grid">
+          <div class="form-group">
+
+            <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document Upload Portal | CHRISCALLIS CONSULT</title>
+  <style>
+    :root {
+      --primary: #006643; /* CAC Emerald Green */
+      --primary-hover: #004d32;
+      --secondary: #d4af37; /* Corporate Gold Accent */
+      --bg: #0f172a; /* Dark premium wallpaper palette */
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: #334155;
+      --success: #16a34a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      padding: 40px 20px;
+      line-height: 1.5;
+    }
+
+    .upload-container {
+      max-width: 650px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border);
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      color: var(--secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 12px;
+    }
+
+    p.description {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 25px;
+    }
+
+    /* Drag and Drop Zone Container Matrix */
+    .drop-zone {
+      border: 2px dashed var(--border);
+      border-radius: 8px;
+      padding: 40px 20px;
+      text-align: center;
+      background: rgba(15, 23, 42, 0.4);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .drop-zone.drag-over {
+      border-color: var(--secondary);
+      background: rgba(212, 175, 55, 0.05);
+    }
+
+    .drop-zone-icon {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .drop-zone-text {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .drop-zone-hint {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Hidden native fallback file selection input */
+    .file-input {
+      display: none;
+    }
+
+    /* Selected Document Status Feed Area */
+    .file-list-container {
+      margin-top: 25px;
+    }
+
+    .file-item {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--border);
+      padding: 12px 16px;
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .file-details {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .file-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #34d399; /* Smooth Green */
+      word-break: break-all;
+    }
+
+    .file-size {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .remove-file-btn {
+      background: none;
+      border: none;
+      color: #f87171;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 0.85rem;
+      padding: 4px 8px;
+      border: 1px solid rgba(248, 113, 113, 0.2);
+      border-radius: 4px;
+    }
+
+    .remove-file-btn:hover {
+      background: rgba(248, 113, 113, 0.1);
+    }
+
+    /* Action Control Row Row */
+    .action-group {
+      display: flex;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 12px 20px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="upload-container">
+    <h2>Required Document Upload</h2>
+    <p class="description">Upload clear scans of your legal Means of Identification (NIN Slip, Passport, or Driver's License) and Signature models to process filing verification steps.</p>
+
+    <!-- INTERACTIVE DROP ZONE MATRIX Component -->
+    <div class="drop-zone" id="dropZone" onclick="triggerFileSelect()">
+      <span class="drop-zone-icon">📁</span>
+      <span class="drop-zone-text">Drag & Drop files here or click to browse</span>
+      <span class="drop-zone-hint">Supported formats: JPG, PNG, PDF (Max file size: 5MB)</span>
+      
+      <!-- Hidden Input element tracking state changes -->
+      <input type="file" id="portalFileInput" class="file-input" accept="image/jpeg, image/png, application/pdf" multiple onchange="handleFileSelection(this.files)">
+    </div>
+
+    <!-- LIVE UPLOAD LISTING FEED PANEL -->
+    <div class="file-list-container">
+      <div id="fileList"></div>
+    </div>
+
+    <!-- BOTTOM COMPONENT REDIRECT CONTEXT NAVIGATION ROW -->
+    <div class="action-group">
+      <a href="index.html" class="btn btn-secondary">Go Back to Form</a>
+    </div>
+  </div>
+
+  <!-- UPLOAD DATA MONITOR SCRIPTING AUTOMATION -->
+  <script>
+    const dropZone = document.getElementById('dropZone');
+    const fileListContainer = document.getElementById('fileList');
+    let uploadedFilesStore = []; // Holds file reference objects locally
+
+    // Simulates click routing on the hidden native element parameter mapping arrays
+    function triggerFileSelect() {
+      document.getElementById('portalFileInput').click();
+    }
+
+    // Handles execution paths when raw file handles list arrays drops into memory
+    function handleFileSelection(files) {
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        
+        // Size limitation evaluation (Reject allocations higher than 5MB)
+        if (file.size > 5 * 1024 * 1024) {
+          alert(`File "${file.name}" exceeds the 5MB registration limit criteria.`);
+          continue;
+        }
+
+        // Avoid adding duplicate file structures inside workspace list
+        if (!uploadedFilesStore.some(f => f.name === file.name && f.size === file.size)) {
+          uploadedFilesStore.push(file);
+        }
+      }
+      renderFileList();
+    }
+
+    // Drops file array models out of runtime allocation arrays tracking storage points
+    function removeFile(index) {
+      uploadedFilesStore.splice(index, 1);
+      renderFileList();
+    }
+
+    // Converts decimal byte lengths down to clean human readable string configurations
+    function formatBytes(bytes) {
+      if (bytes === 0) return '0 Bytes';
+      const k = 1024;
+      const sizes = ['Bytes', 'KB', 'MB'];
+      const i = Math.floor(Math.log(bytes) / Math.log(k));
+      return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+
+    // Generates document file item structural components on the document panel
+    function renderFileList() {
+      fileListContainer.innerHTML = '';
+
+      if (uploadedFilesStore.length === 0) {
+        return;
+      }
+
+      uploadedFilesStore.forEach((file, index) => {
+        const itemHTML = `
+          <div class="file-item">
+            <div class="file-details">
+              <span class="file-name">📄 ${file.name}</span>
+              <span class="file-size">Size Payload weight: ${formatBytes(file.size)}</span>
+            </div>
+            <button type="button" class="remove-file-btn" onclick="removeFile(${index})">Delete</button>
+          </div>
+        `;
+        fileListContainer.innerHTML += itemHTML;
+      });
+    }
+
+    /* DRAG OVER & ENTER HOVER LOGIC STATE SHIFTS */
+    ['dragenter', 'dragover'].forEach(eventName => {
+      dropZone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        dropZone.classList.add('drag-over');
+      }, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+      dropZone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        dropZone.classList.remove('drag-over');
+      }, false);
+    });
+
+    // Capture files directly from user dropping events on top of container element boundaries
+    dropZone.addEventListener('drop', (e) => {
+      const dt = e.dataTransfer;
+      const files = dt.files;
+      handleFileSelection(files);
+    }, false);
+  </script>
+</body>
+</html>
+
+
+            <label for="company">Company Name</label>
+            <input type="text" id="company" required>
+          </div>
+          
+           <div class="form-group full-width">
+            <label for="tax">company type</label>
+            <input type="text" id="company" required>
+          </div>
+
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" required>
+          </div>
+
+
+          <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob" required>
+          </div>
+
+          <div class="form-group">
+            <label for="gender">Gender</label>
+            <input type="text" id="gender" required>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="address">Address</label>
+            <input type="text" id="address" required>
+          </div>
+
+          <div class="form-group">
+            <label for="state">State of Origin</label>
+            <input type="text" id="state" required>
+          </div>
+
+
+          <div class="form-group">
+            <label for="lga">Local Government Area (LGA)</label>
+            <input type="text" id="lga" required>
+          </div>
+
+          <div class="form-group">
+            <label for="occupation">Occupation</label>
+            <input type="text" id="occupation" required>
+          </div>
+
+          <div class="form-group">
+            <label for="id_means">Means of Identification</label>
+            <input type="text" id="id_means" required>
+          </div>
+
+          <div class="form-group">
+            <label for="idnumber">Identification Number</label>
+            <input type="text" id="idnumber" required>
+          </div>
+
+
+          <div class="form-group">
+            <label for="issue_date">Date of Issue</label>
+            <input type="date" id="issue_date" required>
+          </div>
+
+          <div class="form-group">
+            <label for="expiry_date">Date of Expiry</label>
+            <input type="date" id="expiry_date" required>
+          </div>
+
+          <div class="form-group">
+            <label for="bvn">Bank Verification Number (BVN)</label>
+            <input type="text" id="bvn" required>
+          </div>
+
+          <div class="form-group">
+            <label for="nin">National Identification Number (NIN)</label>
+            <input type="text" id="nin" required>
+          </div>
+
+
+          <div class="form-group">
+            <label for="cac">CAC Registration Number</label>
+            <input type="text" id="cac" required>
+          </div>
+
+          <div class="form-group">
+            <label for="rcnumber">RC Number</label>
+            <input type="text" id="rcnumber" required>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="tax">Tax Identification Number</label>
+            <input type="text" id="tax" required>
+          </div>
+        </div>
+
+        <div class="button-group">
+          <button type="button" class="btn-success" onclick="addPerson()">Save & Add Person</button>
+          <button type="button" class="btn-danger" onclick="clearForm()">Reset Form</button>
+
+        </div>
+      </form>
+    </div>
+
+    <!-- Preview Presentation Area -->
+    <div class="card">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--border); padding-bottom: 12px; margin-bottom: 20px;">
+        <h2 style="margin: 0; border: none; padding: 0;">Compiled List Preview</h2>
+        <button type="button" class="btn-danger" style="flex: none; padding: 6px 12px; font-size: 0.85rem; margin: 0;" onclick="clearAllRecords()">Clear List</button>
+      </div>
+      
+      <!-- The main paragraph targeted for output rendering -->
+      <p id="previewOutput" class="preview-section">
+        <span class="status-message">No records added yet. Fill out the form and click "Save & Add Person" to populate the preview list.</span>
+      </p>
+    </div>
+
+  </div>
+
+
+  <script>
+    // In-memory collection storing captured objects
+    let registryList = [];
+
+    // System keys to readable labels schema blueprint
+    const formFieldsBlueprint = [
+      { id: 'company', label: 'Company Name' },
+      { id: 'company', label: 'Company t' },
+      { id: 'name', label: 'Full Name' },
+      { id: 'phone', label: 'Phone Number' },
+      { id: 'email', label: 'Email Address' },
+      { id: 'dob', label: 'Date of Birth' },
+      { id: 'gender', label: 'Gender' },
+      { id: 'address', label: 'Address' },
+      { id: 'state', label: 'State of Origin' },
+      { id: 'lga', label: 'LGA' },
+      { id: 'occupation', label: 'Occupation' },
+      { id: 'id_means', label: 'Means of ID' },
+      { id: 'idnumber', label: 'ID Number' },
+      { id: 'issue_date', label: 'Date of Issue' },
+      { id: 'expiry_date', label: 'Date of Expiry' },
+      { id: 'bvn', label: 'BVN' },
+      { id: 'nin', label: 'NIN' },
+      { id: 'cac', label: 'CAC Registration No' },
+      { id: 'rcnumber', label: 'RC Number' },
+      { id: 'tax', label: 'Tax ID (TIN)' }
+    ];
+
+    function addPerson() {
+      let currentRecord = {};
+      let hasData = false;
+
+      // Extract current values from form elements
+      formFieldsBlueprint.forEach(field => {
+        const inputEl = document.getElementById(field.id);
+        if (inputEl) {
+          const processedValue = inputEl.value.trim();
+          currentRecord[field.id] = processedValue ? processedValue : "N/A";
+          if (processedValue !== "") {
+
+            hasData = true; 
+          }
+        }
+      });
+
+      // Verify that at least one form value is present before processing submission
+      if (!hasData) {
+        return;
+      }
+
+      // Append record instance to core registry array
+      registryList.push(currentRecord);
+      
+      // Update view state layout elements
+      renderPreviewList();
+      clearForm();
+    }
+
+    function renderPreviewList() {
+
+      const containerElement = document.getElementById('previewOutput');
+      
+      if (registryList.length === 0) {
+        containerElement.innerHTML = `<span class="status-message">No records added yet. Fill out the form and click "Save & Add Person" to populate the preview list.</span>`;
+        return;
+      }
+
+      let generatedHTML = "";
+
+      // Loop through each submitted individual and generate structural text chunks
+      registryList.forEach((person, index) => {
+        let itemsString = "";
+        
+        formFieldsBlueprint.forEach(field => {
+          itemsString += `<strong>${field.label}:</strong> ${person[field.id]}<br>`;
+        });
+
+        generatedHTML += `
+          <div class="person-entry">
+
+            <div class="person-title">Individual Records <span class="badge">Person #${index + 1}</span></div>
+            <div class="info-list">${itemsString}</div>
+          </div>
+        `;
+      });
+
+      containerElement.innerHTML = generatedHTML;
+    }
+
+    function clearForm() {
+      formFieldsBlueprint.forEach(field => {
+        const inputEl = document.getElementById(field.id);
+        if (inputEl) {
+          inputEl.value = "";
+        }
+      });
+    }
+
+    function clearAllRecords() {
+
+      registryList = [];
+      renderPreviewList();
+    }
+  </script>
+
+</body>
+</html>
+
+        <h1>
+            you are done with filling in your information, click on the button below to submit your information and get started with our services.
+        </h1>
+       <a href="about.html"> <button type="submit">Submit</button></a>
+    </form><a href="frank.html" target="_blank">
+   <button >go back</button></a>
+    </p> 
+    </section>
+</main>
+
+

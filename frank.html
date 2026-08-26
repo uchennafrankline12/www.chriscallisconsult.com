@@ -1,0 +1,329 @@
+<main>
+    <section class="home" id="home">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHRISCALLIS CONSULT @ cac</title>
+    <link rel="stylesheet" href="main.css">
+    
+    <style>
+        /* Base page resets */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0b0f19;
+            color: #ffffff;
+            scroll-behavior: smooth;
+        }
+
+        /* 1. Fullscreen Video locked at the very back of the first screen */
+        #wallpaper {
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            object-position: center;
+            z-index: -2; 
+        }
+
+        /* 2. Dark overlay layer for text readability over video */
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6); 
+            z-index: -1; 
+            pointer-events: none;
+        }
+
+        /* Fixed Navigation Header */
+        header {
+            background: rgba(11, 15, 25, 0.85);
+            backdrop-filter: blur(10px);
+            padding: 20px 5%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        nav h1 {
+            font-size: 1.4rem;
+            letter-spacing: 1px;
+            color: #00ff88;
+        }
+
+        .ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .ul li a:hover {
+            color: #00ff88; 
+        }
+
+        /* Hero Section (First Screen Visual) */
+        .hero-section {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            max-width: 800px;
+        }
+
+        .hero-section p {
+            font-size: 1.3rem;
+            color: #cccccc;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        .sub-prompt {
+            font-size: 1.3rem !important;
+            color: #00ff88;
+            margin-bottom: 35px;
+            text-transform: none !important;
+        }
+
+        .get-started-btn {
+            background-color: #00ff88;
+            color: #0b0f19;
+            border: none;
+            border-radius: 8px;
+            height: 55px;
+            width: 100%;
+            max-width: 400px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 255, 136, 0.3);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .get-started-btn:hover {
+            background-color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        /* ------------------------------------------------ */
+        /* NEW: Scrollable Content Sections Below Wallpaper */
+        /* ------------------------------------------------ */
+        .info-container {
+            position: relative;
+            background-color: #0b0f19; /* Solid background covers the video as you scroll */
+            z-index: 10;
+            padding: 80px 5%;
+        }
+
+        .info-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-heading h2 {
+            font-size: 2.2rem;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .section-heading p {
+            color: #8a99ad;
+            font-size: 1.1rem;
+        }
+
+        .accent-bar {
+            width: 60px;
+            height: 4px;
+            background: #00ff88;
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+
+        /* Corporate Info Overview Grid */
+        .about-cac-box {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 35px;
+            margin-bottom: 40px;
+        }
+
+        .about-cac-box h3 {
+            color: #00ff88;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .about-cac-box p {
+            color: #cbd5e1;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        /* Registration Categories Cards Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 25px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            border-color: #00ff88;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .info-card h4 {
+            font-size: 1.2rem;
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        .info-card p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Responsive design adjustments */
+        @media (max-width: 768px) {
+            .hero-section h1 { font-size: 2rem; }
+            .hero-section p { font-size: 1rem; }
+            nav h1 { font-size: 1.1rem; }
+            .ul { gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- VIDEO BACKDROP (Fixed at the back) -->
+    <video id="wallpaper" autoplay muted loop playsinline preload="auto">
+        <source src="neche cac.mp4" type="video/mp4">
+    </video>
+
+    <!-- DARK OVERLAY OVER VIDEO -->
+    <div class="overlay"></div>
+
+    <!-- MAIN NAVBAR HEADER -->
+    <header>
+        <nav>
+            <h1>CHRISCALLIS CONSULT @ cac</h1>
+            <ul class="ul">
+                <li><a href="#">Home</a></li>
+                <li><a href="#about-section">CAC Info</a></li>
+                <li><a href="about.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- FIRST SCREEN: HERO & VIDEO WALLPAPER -->
+    <main class="hero-section">
+        <h1>Ask me anything about CAC</h1>
+        <p>Limited, NGO, Church, Business Name, Annual Return, Search</p>
+        
+        <h1 class="sub-prompt">Fill in your information below to get started</h1>
+        
+        <a href="index.html" target="_blank" style="width: 100%; display: flex; justify-content: center; text-decoration: none;">
+            <button class="get-started-btn">
+                Get Started 
+            </button>
+        </a>
+    </main>
+
+    <!-- SECOND SCREEN: NEW SCROLLABLE INFORMATION REGISTRATION GUIDE -->
+    <section class="info-container" id="about-section">
+        <div class="info-inner">
+            
+            <div class="section-heading">
+                <h2>Corporate Affairs Commission Information Guide</h2>
+                <div class="accent-bar"></div>
+                <p>Understanding business structures and compliance requirements in Nigeria.</p>
+            </div>
+
+            <!-- About CAC Overview Card -->
+            <div class="about-cac-box">
+                <h3>What is the Corporate Affairs Commission (CAC)?</h3>
+                <p>The Corporate Affairs Commission was established under the Companies and Allied Matters Act (CAMA) to regulate the formation and management of companies in Nigeria. It is the sole government agency responsible for officially registering any legal business or corporate body in the country.</p>
+                <p>Operating a commercial business or organization without official CAC integration is illegal under Nigerian corporate regulation framework policies. Registration guarantees brand identity protection and legal operational status.</p>
+            </div>
+
+            <!-- Breakdown of Registration Framework Modules -->
+            <div class="services-grid">
+                
+                <div class="info-card">
+                    <span class="card-icon">💼</span>
+                    <h4>Business Name Registration</h4>
+                    <p>Best suited for sole proprietors, artisans, freelancers, and small partnerships. It is fast to register and ideal for businesses managed directly under an owner's personal legal liability framework.</p>
+                </div>
+
+                <div class="info-card">
+                    <span class="card-icon">🏢</span>
+                    <h4>Private Limited Company (LTD)</h4>
+                    <p>Creates a distinct legal entity separate from its owners. Protects shareholders through limited liability rules. Required for corporate bidding, opening commercial bank accounts, and seeking investors.</p>
+                </div>
+
+                <div class="info-card">
+                    <span class="card-icon">🤝</span>
+                    <h4>Non-Governmental Organization (NGO)</h4>
+                    <p>Designed for non-profit organizations, charities, and social enterprises. Registration ensures legal recognition, enabling access to grants, donations, and tax exemptions.</p>
+                </div> 
+            </section>           
+            </main>
