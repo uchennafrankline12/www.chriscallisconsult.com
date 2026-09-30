@@ -327,14 +327,15 @@
                 </div> 
             </section>           
             </main>
-                 <html lang="en">
+                <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WhatsApp Button</title>
     
-    <!-- Pulls the white WhatsApp logo icon -->
-    <link rel="stylesheet" href="https://whatsapp.com">
+    <!-- Fixed: Pulls FontAwesome icons so the WhatsApp symbol actually appears inside the circle -->
+    <link rel="stylesheet" href="https://cloudflare.com">
 
     <style>
         .whatsapp-button {
@@ -369,9 +370,9 @@
 <body>
 
     <h1>My Web Page</h1>
-    <p>Click the green circle below. It is now programmed to prevent browser errors.</p>
+    <p>Click the green circle below. It will open WhatsApp directly.</p>
 
-    <!-- The button link now runs a smart script to prevent errors -->
+    <!-- The floating action button -->
     <a href="#" onclick="openWhatsApp(event)" class="whatsapp-button">
         <i class="fab fa-whatsapp"></i>
     </a>
@@ -388,18 +389,17 @@
             
             let whatsappUrl;
             if (isMobile) {
-                // Mobile link (opens WhatsApp app instantly)
-                whatsappUrl = `https://whatsapp.com{2348136272082}&text=${hi}`;
+                // Mobile: Universal link that deep-links directly into the native WhatsApp application
+                whatsappUrl = `https://wa.me{2348136272082}?text=${hi}`;
             } else {
-                // Desktop link (safely opens WhatsApp Web in browser without requiring app download)
-                whatsappUrl = `https://whatsapp.com{2348136272082}&text=${hello}`;
+                // Desktop: Direct link to WhatsApp Web so desktop users don't get stuck downloading an app
+                whatsappUrl = `https://whatsapp.com{2348136272082}&text=${hi}`;
             }
             
-            // Open the working link in a new browser tab
+            // Open the correct working link in a new browser tab
             window.open(whatsappUrl, '_blank');
         }
     </script>
 
 </body>
 </html>
-
