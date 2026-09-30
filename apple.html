@@ -778,10 +778,85 @@
             you are done with filling in your information, click on the button below to submit your information and get started with our services.
         </h1>
        <a href="about.html"> <button type="submit">Submit</button></a>
-    </form><a href="frank.html" target="_blank">
+    </form><a href="index.html" target="_blank">
    <button >go back</button></a>
     </p> 
     </section>
 </main>
+ <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Button</title>
+    
+    <!-- Pulls the white WhatsApp logo icon -->
+    <link rel="stylesheet" href="https://whatsapp.com">
+
+    <style>
+        .whatsapp-button {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25D366; 
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
+            z-index: 9999;
+            text-decoration: none;
+            transition: transform 0.2s ease;
+            cursor: pointer;
+        }
+
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            background-color: #128C7E;
+        }
+
+        .whatsapp-button i {
+            font-size: 32px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>My Web Page</h1>
+    <p>Click the green circle below. It is now programmed to prevent browser errors.</p>
+
+    <!-- The button link now runs a smart script to prevent errors -->
+    <a href="#" onclick="openWhatsApp(event)" class="whatsapp-button">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        function openWhatsApp(event) {
+            event.preventDefault(); // Prevents page reload errors
+            
+            const phoneNumber = "2348136272082";
+            const message = encodeURIComponent("Hello! I am contacting you from your website.");
+            
+            // Checks if the visitor is using a mobile phone or a desktop computer
+            const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+            
+            let whatsappUrl;
+            if (isMobile) {
+                // Mobile link (opens WhatsApp app instantly)
+                whatsappUrl = `https://whatsapp.com{2348136272082}&text=${hi}`;
+            } else {
+                // Desktop link (safely opens WhatsApp Web in browser without requiring app download)
+                whatsappUrl = `https://whatsapp.com{2348136272082}&text=${hello}`;
+            }
+            
+            // Open the working link in a new browser tab
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+
+</body>
+</html>
 
 
