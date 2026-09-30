@@ -361,5 +361,58 @@
                     </div>
                 </div>    
             </div>
-        </section>    
+        </section> 
+        <section>
+            <!-- This links the official FontAwesome icons so we can display the WhatsApp logo -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+
+    <style>
+        /* Styles for the floating WhatsApp button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366; /* Official WhatsApp Green */
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            text-decoration: none;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        /* Makes the circle pop slightly when hovered */
+        .whatsapp-button:hover {
+            transform: scale(1.1);
+            background-color: #128C7E; /* Darker WhatsApp Green */
+        }
+
+        /* Sizes the WhatsApp icon inside the circle */
+        .whatsapp-button i {
+            font-size: 35px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to My Website</h1>
+    <p>Look at the bottom right corner of the screen to see the WhatsApp chat bubble!</p>
+
+    <!-- 
+      THE WHATSAPP CIRCLE BUTTON
+      Replace '1234567890' with your actual phone number including country code (No + or spaces).
+      You can also change the 'text=' part to customize the automatic first message.
+    -->
+    <a href="https://wa.me." 
+       class="whatsapp-button" 
+       target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+</body>
+        </section>
         
